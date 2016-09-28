@@ -1,0 +1,40 @@
+<% if flash[:success] %>
+  <div class="alert alert-success" role="alert">
+    <%= flash[:success] %>
+  </div>
+<% end %>
+
+<div class ="item">
+  <p>
+  <strong>Name:</strong>
+  <%= @byot.name %>
+  </p>
+
+  <p>
+  <strong>Description:</strong>
+  <%= @byot.description %>
+  </p>
+
+  <p>
+  <strong>Scheduled at:</strong>
+  <%= @byot.byot_at.strftime("%B %d, %Y, %H:%M") %>
+  </p>
+
+  <strong>Talk submission from:</strong>
+  <%= @byot.window_opens_at.strftime("%B %d, %Y, %H:%M") %>
+  </p>
+
+  <strong>Talk submission till:</strong>
+  <%= @byot.window_closes_at.strftime("%B %d, %Y, %H:%M") %>
+  </p>
+
+  <strong>Status:</strong>
+  <%= @byot.status %>
+  </p>
+</div>
+
+<div class="action">
+  <%= link_to 'Edit', edit_byot_schedule_path(@byot), class: 'btn btn-primary btn-sm', type: 'button' %>
+  <%= link_to 'Delete', byot_schedule_path, class: 'btn btn-primary btn-sm', method: :delete, type: 'button' %>
+  <%= link_to 'Back', root_path, class: 'btn btn-primary btn-sm', type: 'button' %>
+</div>

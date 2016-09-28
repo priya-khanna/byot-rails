@@ -1,0 +1,16 @@
+<% if flash[:success] %>
+  <div class="alert alert-success" role="alert">
+    <%= flash[:success] %>
+  </div>
+<% end %>
+
+<div class ="item">
+  <h2> New talk submission </h2>
+</div>
+
+<%= render 'talk' %>
+<br/>
+<div class="action">
+  <%= link_to 'Back', byot_schedules_latest_path, class: 'btn btn-primary btn-sm', type: 'button' %>
+</div>
+

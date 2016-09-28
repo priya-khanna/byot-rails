@@ -1,0 +1,24 @@
+<% byot_available = ByotSchedule.where('byot_at > ?', Time.now).blank? ? false : true %>
+<% byot = ByotSchedule.last %>
+<% if byot %>
+  <% byot_date = byot.byot_at.strftime("%B %d, %Y") %>
+  <% byot_time = byot.byot_at.strftime("%H:%M") %>
+<% end %>
+
+<div class="container">
+  <% if current_user %>
+    <h1> <span class= "text"> Upcoming BYOT! </span></h1>
+    <% if byot_available %>
+      <h3><span class="label label-info"><%= byot_date %></span> <span class="label label-info"><%= byot_time %></span></h3>
+      <br/>
+      <span><%= link_to 'Check now', byot_schedules_latest_path, class: 'btn btn-primary btn-lg', type: 'button' %></span>
+      <br/><br/>
+      <span><%= link_to 'Update BYOT event', edit_byot_schedule_path(byot.id), class: 'btn btn-primary btn-lg', type: 'button' %></span>
+    <% else %>
+      <h3><span class="label label-info">Not yet scheduled</span></h3><br/>
+      <span><%= link_to 'Create a new BYOT event', new_byot_schedule_path, class: 'btn btn-primary btn-lg', type: 'button' %></span>
+    <% end %>
+  <% else %>
+  <h3> <span class="landing"> Welcome to the awesomest talk event @Rbus - BYOT ( Bring Your Own Talk )</span></h3>
+  <% end %>
+</div>

@@ -1,0 +1,16 @@
+<% if flash[:success] %>
+  <div class="alert alert-success" role="alert">
+    <%= flash[:success] %>
+  </div>
+<% end %>
+
+<div class ="item">
+  <h2> New BYOT schedule </h2>
+</div>
+
+<%= render 'schedule' %>
+<br/>
+<div class="action">
+  <%= link_to 'Back', root_path, class: 'btn btn-primary btn-sm', type: 'button' %>
+</div>
+

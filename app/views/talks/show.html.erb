@@ -1,0 +1,31 @@
+<% if flash[:success] %>
+  <div class="alert alert-success" role="alert">
+    <%= flash[:success] %>
+  </div>
+<% end %>
+
+<div class ="item">
+  <p>
+  <strong>Name:</strong>
+  <%= @talk.name %>
+  </p>
+
+  <p>
+  <strong>Source Url:</strong>
+  <%= @talk.source_url %>
+  </p>
+
+  <strong>BYOT:</strong>
+  <%= @talk.byot_schedule.byot_at.strftime("%B %d, %Y, %H:%M") %>
+  </p>
+
+  <strong>Description:</strong>
+  <%= @talk.description %>
+  </p>
+</div>
+
+<div class="action">
+  <%= link_to 'Edit', edit_talk_path(@talk), class: 'btn btn-primary btn-sm', type: 'button' %>
+  <%= link_to 'Delete', talk_path, class: 'btn btn-primary btn-sm', method: :delete, type: 'button' %>
+  <%= link_to 'Back', byot_schedules_latest_path, class: 'btn btn-primary btn-sm', type: 'button' %>
+</div>
